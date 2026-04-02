@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mahjong Drop</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hud">
+        <div>
+          <p class="hud-label">Mode</p>
+          <p class="hud-value" id="levelLabel">Mahjong Drop</p>
+        </div>
+        <div>
+          <p class="hud-label">Holding</p>
+          <p class="hud-value" id="zonesLabel">0/4</p>
+        </div>
+        <button class="hud-button" id="restartButton" type="button">Restart</button>
+      </section>
+      <section class="canvas-shell">
+        <canvas id="gameCanvas" width="750" height="1500"></canvas>
+        <div class="overlay hidden" id="winOverlay">
+          <div class="overlay-card">
+            <h1>Nice Meld</h1>
+            <p>所有待落麻将都整理完了。</p>
+            <button class="hud-button" id="overlayRestartButton" type="button">Play Again</button>
+          </div>
+        </div>
+        <div class="overlay hidden" id="failOverlay">
+          <div class="overlay-card">
+            <h1>No Space</h1>
+            <p>暂留区超过上限，新的麻将无处可进。</p>
+            <button class="hud-button" id="overlayFailRestartButton" type="button">Retry</button>
+          </div>
+        </div>
+      </section>
+      <section class="debug-panel">
+        <label><input type="checkbox" id="toggleSensor" /> Show Sensor</label>
+      </section>
+    </main>
+
+    <script src="./js/vendor/matter.min.js"></script>
+    <script src="./js/config.js"></script>
+    <script src="./js/utils.js"></script>
+    <script src="./js/effects.js"></script>
+    <script src="./js/melds.js"></script>
+    <script src="./js/physics.js"></script>
+    <script src="./js/renderer.js"></script>
+    <script src="./js/game.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
