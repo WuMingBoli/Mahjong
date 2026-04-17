@@ -1,55 +1,64 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mahjong Drop</title>
-    <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="./style.css" />
-  </head>
-  <body>
-    <main class="app-shell">
-      <section class="hud">
-        <div>
-          <p class="hud-label">Mode</p>
-          <p class="hud-value" id="levelLabel">Mahjong Drop</p>
-        </div>
-        <div>
-          <p class="hud-label">Holding</p>
-          <p class="hud-value" id="zonesLabel">0/4</p>
-        </div>
-        <button class="hud-button" id="restartButton" type="button">Restart</button>
-      </section>
-      <section class="canvas-shell">
-        <canvas id="gameCanvas" width="750" height="1500"></canvas>
-        <div class="overlay hidden" id="winOverlay">
-          <div class="overlay-card">
-            <h1>Nice Meld</h1>
-            <p>所有待落麻将都整理完了。</p>
-            <button class="hud-button" id="overlayRestartButton" type="button">Play Again</button>
-          </div>
-        </div>
-        <div class="overlay hidden" id="failOverlay">
-          <div class="overlay-card">
-            <h1>No Space</h1>
-            <p>暂留区超过上限，新的麻将无处可进。</p>
-            <button class="hud-button" id="overlayFailRestartButton" type="button">Retry</button>
-          </div>
-        </div>
-      </section>
-      <section class="debug-panel">
-        <label><input type="checkbox" id="toggleSensor" /> Show Sensor</label>
-      </section>
-    </main>
+<html>
+<head>
+  <meta charset="utf-8">
 
-    <script src="./js/vendor/matter.min.js"></script>
-    <script src="./js/config.js"></script>
-    <script src="./js/utils.js"></script>
-    <script src="./js/effects.js"></script>
-    <script src="./js/melds.js"></script>
-    <script src="./js/physics.js"></script>
-    <script src="./js/renderer.js"></script>
-    <script src="./js/game.js"></script>
-    <script src="./js/main.js"></script>
-  </body>
+  <title>Cocos Creator | FindFault</title>
+
+  <!--http://www.html5rocks.com/en/mobile/mobifying/-->
+  <meta name="viewport"
+        content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1,minimal-ui=true"/>
+
+  <!--https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+
+  <!-- force webkit on 360 -->
+  <meta name="renderer" content="webkit"/>
+  <meta name="force-rendering" content="webkit"/>
+  <!-- force edge on IE -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <!-- force full screen on some browser -->
+  <meta name="full-screen" content="yes"/>
+  <meta name="x5-fullscreen" content="true"/>
+  <meta name="360-fullscreen" content="true"/>
+
+  <!--fix fireball/issues/3568 -->
+  <!--<meta name="browsermode" content="application">-->
+  <meta name="x5-page-mode" content="app">
+
+  <!--<link rel="apple-touch-icon" href=".png" />-->
+  <!--<link rel="apple-touch-icon-precomposed" href=".png" />-->
+
+  <link rel="stylesheet" type="text/css" href="style.css"/>
+
+</head>
+<body>
+  <div id="GameDiv" cc_exact_fit_screen="true">
+      <div id="Cocos3dGameContainer">
+        <canvas id="GameCanvas" oncontextmenu="event.preventDefault()" tabindex="99"></canvas>
+      </div>
+    </div>
+  
+
+<!-- Polyfills bundle. -->
+
+<script src="src/polyfills.bundle.js" charset="utf-8"> </script>
+
+
+<!-- SystemJS support. -->
+<script src="src/system.bundle.js" charset="utf-8"> </script>
+
+<!-- Import map -->
+<script src="src/import-map.json" type="systemjs-importmap" charset="utf-8"> </script>
+
+<script>
+    System.import('./index.js').catch(function(err) { console.error(err); })
+</script>
+
+</body>
 </html>
